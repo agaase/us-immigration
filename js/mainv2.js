@@ -20,7 +20,7 @@ var tooltipDiv = d3.select("body").append("div")
       .style("opacity", 0);
  
 var dummy = {
-  "america" : {
+  "north america" : {
     "left" : 0,
     "top" : 0,
     "width" : 29,
