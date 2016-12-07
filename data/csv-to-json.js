@@ -1511,11 +1511,28 @@ var parser = csv.parse({delimiter: ','}, function(err, data){
     var country = data[i][0].replace(/([.]|[0-9])/g,"").trim().toLowerCase();
     
     if(country.indexOf("region")>-1){
-      region = country.split("(")[0].toLowerCase();
+      if(country.indexOf("russia")>-1){
+          for(var z=1;z<data[i].length;z++){
+             var val = data[i][z] == "-" ? 0 : parseInt(data[i][z].replace(/[,]/g,""));
+             var yr = data[0][z].split("to");
+             yr = parseInt(yr[1])+1;
+             var ob = {
+               "country" : "russia",
+               "region" : "russia",
+               "latitude" : world_o["russia"]["latitude"],
+               "longitude" : world_o["russia"]["longitude"],
+               "value" : val,
+               "yr" : yr
+            };
+            items.push(ob);
+         }
+      }else{
+         region = country.split("(")[0].toLowerCase();
+      }
       continue;
     }
     if(world_o[country] || country.toLowerCase().indexOf(region)>-1){
-      console.log(country);
+      // console.log(country);
        for(var z=1;z<data[i].length;z++){
          var val = data[i][z] == "-" ? 0 : parseInt(data[i][z].replace(/[,]/g,""));
          var yr = data[0][z].split("to");
@@ -1532,7 +1549,7 @@ var parser = csv.parse({delimiter: ','}, function(err, data){
        }
     }
   }
-  console.log("posting - " + items.length);
+  //console.log("posting - " + items.length);
   elPost(items);
 });
 

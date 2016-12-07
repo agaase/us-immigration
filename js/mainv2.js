@@ -142,7 +142,7 @@ var drawLaws = function(){
       var text = laws.append("text")
         .attr("x",x1)
         .attr("y",(positions.laws.top/100)*wh)
-        .on("mouseover", function(d) {   
+        .on("click", function(d) {   
             tooltipDiv.transition()    
                 .duration(200)    
                 .style("opacity", .9);    
@@ -153,11 +153,13 @@ var drawLaws = function(){
         .on("mouseout", function(d) {   
             tooltipDiv.transition()    
                 .duration(50)    
-                .style("opacity", 0); 
+                .style("opacity", 0)
+                .style("left", "-1000px")   
         })
         .attr("title",laws_data[yr]["desc"])
         .style("font-size","100%")
         .style("fill",colors.main)
+        .style("cursor","pointer")
         .style("text-decoration","underline")
         .text(yr+" - "+laws_data[yr]["title"].substring(0,40));  
         ct++;
@@ -401,8 +403,8 @@ var renderMap = function(){
         for(var i=0;i<values.length;i++){
           var coun = reg.append("g")
               .attr("class","countryOnMap")
-              .attr("title",values[i].value)
-              .on("mouseover", function(d) {   
+              .attr("title",values[i].name+"--"+values[i].value)
+              .on("click", function(d) {   
                   tooltipDiv.transition()    
                       .duration(200)    
                       .style("opacity", .9);    
@@ -411,9 +413,11 @@ var renderMap = function(){
                       .style("top", (d3.event.pageY - 28) + "px");  
                   })          
               .on("mouseout", function(d) {   
-                  tooltipDiv.transition()    
+                  tooltipDiv.
+                      transition()    
                       .duration(50)    
-                      .style("opacity", 0); 
+                      .style("opacity", 0) 
+                      .style("left", "-1000px");
               });
           for(var j=0;j<(values[i].newV>0 ? values[i].newV : 0);j++){
             if(xx + gridSize > bound){
