@@ -81,12 +81,12 @@ var dummy = {
   }
 }
 
-//https://search-undp-nnvlmicmvsudjoqjuj574sqrty.us-west-2.es.amazonaws.com
+//https://search-undp-uhzzk2e4xmpuedy3ys6war7364.us-east-1.es.amazonaws.com
   //http://localhost:9200
 var runQ = function(q,c,type){
   $.ajax({
     type: "POST",
-    url: "http://localhost:9200/immigration/"+(type || "country_yr") +"/_search",
+    url: "https://search-undp-uhzzk2e4xmpuedy3ys6war7364.us-east-1.es.amazonaws.com/immigration/"+(type || "country_yr") +"/_search",
     data: JSON.stringify(q),
     success: function(data){
       c(data);

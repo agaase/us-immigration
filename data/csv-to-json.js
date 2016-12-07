@@ -3,8 +3,8 @@ var csv = require('csv');
 var yrWiseJson = {};
 var deferred = require('deferred');
 var elasticsearch = require('elasticsearch');
-var hostu = "http://localhost:9200";
-//var hostu = 'https://search-undp-nnvlmicmvsudjoqjuj574sqrty.us-west-2.es.amazonaws.com/';
+// var hostu = "http://localhost:9200";
+var hostu = 'https://search-undp-uhzzk2e4xmpuedy3ys6war7364.us-east-1.es.amazonaws.com/';
 var client = new elasticsearch.Client({
   host: hostu
 });
@@ -1532,11 +1532,9 @@ var parser = csv.parse({delimiter: ','}, function(err, data){
        }
     }
   }
-  console.log(items[78]);
+  console.log("posting - " + items.length);
   elPost(items);
-  //console.log(yrWiseJson["1980 to 1989"]);
-  //fs.writeFileSync("yrWise.json",JSON.stringify(yrWiseJson));
 });
 
 
-fs.createReadStream('data/immigration.csv').pipe(parser);
+fs.createReadStream('immigration.csv').pipe(parser);
