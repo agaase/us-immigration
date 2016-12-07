@@ -5,15 +5,15 @@ var laws_data={
   },
   "1798": {
     "desc": "Extended the duration of residence required for immigrants to become citizens to 14 years. Enacted June 18, 1798, with no expiration date, it was repealed in 1802. Authorized the president to deport any resident immigrant considered \"dangerous to the peace and safety of the United States.\" It was activated June 25, 1798, with a two-year expiration date. Authorized the president to apprehend and deport resident aliens if their home countries were at war with the United States of America. Enacted July 6, 1798, and providing no sunset provision, the act remains intact today as 50 U.S.C. § 21",
-    "title": "Naturalization Act (officially An Act to Establish a Uniform Rule of Naturalization; ch. 54, 1 Stat. 566)\nAlien Friends Act (officially An Act Concerning Aliens; ch. 58, 1 Stat. 570)\nAlien Enemies Act (officially An Act Respecting Alien Enemies; ch. 66, 1 Stat. 577)"
+    "title": "Naturalization Act"
   },
   "1870": {
     "desc": "Extended the naturalization process to \"aliens of African nativity and to persons of African descent.\" Other non-whites were not included in this act and remained excluded from naturalization, per theNaturalization Act of 1790",
-    "title": "Naturalization Act of 1870"
+    "title": "Naturalization Act"
   },
   "1875": {
     "desc": "The first federal immigration law and prohibited the entry of immigrants considered as \"undesirable\" The law classified as \"undesirable\" any individual from Asia who was coming to America to be a contract laborer strengthen the ban against \"coolie\" laborers, by imposing a fine of up to $2,000 and maximum jail sentence of one year upon anyone who tried to bring a person from China, Japan, or any oriental country to the United States \"without their free and voluntary consent, for the purpose of holding them to a term of service\" Imposed a 50 cent head tax to fund immigration officials.",
-    "title": "Page Act of 1875 (Sect. 141, 18 Stat. 477, 1873-March 1875)"
+    "title": "Page Act of 1875"
   },
   "1882": {
     "desc": "Restricted immigration of Chinese laborers for 10 years. Prohibited Chinese naturalization. Provided deportation procedures for illegal Chinese. Marked the birth of illegal immigration (in America).[1] The Act was \"a response to racism [in America] and to anxiety about threats from cheap labor [from China].\" [2]",
@@ -21,7 +21,7 @@ var laws_data={
   },
   "1885": {
     "desc": "Prohibited the importation and migration of foreigners and aliens under contract or agreement to perform labor in the United States",
-    "title": "Alien Contract Labor Law (Sess. II Chap. 164; 23 Stat. 332)"
+    "title": "Alien Contract Labor Law"
   },
   "1891": {
     "desc": "First comprehensive immigration laws for the US. Bureau of Immigration set up in the Treasury Dept.[3] Immigration Bureau directed to deport unlawful aliens. Empowered \"the superintendent of immigration to enforce immigration laws\".[4]",
@@ -33,11 +33,11 @@ var laws_data={
   },
   "1898": {
     "desc": "The Supreme Court ruled that a child of Chinese descent born in the United States - whose parents at the time of his birth are subjects of the Emperor of China but who are domiciled in the United States as permanent residents; are carrying on business there; and are not employed in any diplomatic or other official capacity under the Emperor of China - is a citizen of the United States by virtue of having been born \"in the United States and subject to the jurisdiction thereof,\" per the first clause of the Fourteenth Amendment to the United States Constitution.Several years later, in the wake of the 1906 San Francisco Earthquake and Fire, a number of Chinese immigrants who were otherwise subject to the Chinese Exclusion Act were nonetheless able to claim American citizenship by alleging they were born in San Francisco, and that their birth certificates had been destroyed along with those of everyone else who had been born in San Francisco. \"Papers for fictitious children were sold in China, allowing Chinese to immigrate despite the laws.\" [1]",
-    "title": "United States v. Wong Kim Ark[5]"
+    "title": "United States v. Wong Kim Ark"
   },
   "1903": {
     "desc": "Added four inadmissible classes: anarchists, people with epilepsy, beggars, and importers of prostitutes",
-    "title": "Immigration Act of 1903 (Anarchist Exclusion Act)"
+    "title": "Immigration Act of 1903"
   },
   "1906": {
     "desc": "Standardized naturalization procedures made some knowledge of English a requirement for citizenship established the Bureau of Immigration and Naturalization",
@@ -61,7 +61,7 @@ var laws_data={
   },
   "1922": {
     "desc": "Reversed former immigration laws regarding marriage, also known as the Married Women's Citizenship Act or the Women's Citizenship Act. Previously, a woman lost her US citizenship if she married a foreign man, since she assumed the citizenship of her husband, a law that did not apply to men who married foreign women. The law repealed sections 3 and 4 of the Expatriation Act of 1907.",
-    "title": "The Cable Act of 1922 (ch. 411, 42 Stat. 1021, \"Married Women’s Independent Nationality Act\")"
+    "title": "The Cable Act of 1922"
   },
   "1924": {
     "desc": "Established with the Immigration Act of 1924. Total annual immigration was capped at 150,000. Immigrants fit into two categories: those from quota-nations and those from non-quota nations. Immigrant visas from quota-nations were restricted to the same ratio of residents from the country of origin out of 150,000 as the ratio of foreign-born nationals in the United States. The percentage out of 150,000 was the relative number of visas a particular nation received. Non-quota nations, notably those contiguous to the United States only had to prove an immigrant's residence in that country of origin for at least two years prior to emigration to the United States. Laborers from Asiatic nations were excluded but exceptions existed for professionals, clergy, and students to obtain visas.",
@@ -69,19 +69,19 @@ var laws_data={
   },
   "1930": {
     "desc": "Federal officials deported \"Tens of thousands, and possibly more than 400,000, Mexicans and Mexican-Americans... Many, mostly children, were U.S. citizens.\" [7] \"Applications for legal admission into the United States increased following World War II — and so did illegal immigration.\" [8] Some used fraudulent marriages as their method of illegal entry in the U.S. \"Japanese immigration became disproportionately female, as more women left Japan as \"picture brides\", betrothed to emigrant men into the U.S. whom they had never met.\" [9]",
-    "title": ""
+    "title": "Deportation of Mexicans"
   },
   "1934": {
     "desc": "Allowed foreign-born children of American mothers and alien fathers who had entered America before age 18 and lived in America for five years to apply for American citizenship for the first time. Made the naturalization process quicker for American women's alien husbands.",
-    "title": "Equal Nationality Act of 1934"
+    "title": "Equal Nationality Ac"
   },
   "1940": {
     "desc": "Pertains chiefly to \"Nationality at Birth,\" Nationality through Naturalization,\" and \"Loss of Nationality\"",
-    "title": "Nationality Act of 1940"
+    "title": "Nationality Act"
   },
   "1943": {
     "desc": "Repealed the Chinese Exclusion Act and permitted Chinese nationals already in the country to become naturalized citizens.",
-    "title": "Chinese Exclusion Repeal Act of 1943 (Magnuson Act)"
+    "title": "Chinese Exclusion Repeal Act (Magnuson Act)"
   },
   "1952": {
     "desc": "Set a quota for aliens with skills needed in the US. Increased the power of the government to deport illegal immigrants suspected ofCommunist sympathies.",
@@ -89,11 +89,7 @@ var laws_data={
   },
   "1953": {
     "desc": "The Supreme Court found, \"The Bill of Rights is a futile authority for the alien seeking admission for the first time to these shores. But once an alien lawfully enters and resides in this country he becomes invested with the rights guaranteed by the Constitution to all people within our borders\".",
-    "title": "Kwong Hai Chew v. Colding Template:344 U.S. 590, 596"
-  },
-  "1954": {
-    "desc": "A wave of illegal immigration came from Mexico in the early 1950s, but it was dampened by President Eisenhower.[10]",
-    "title": ""
+    "title": "Kwong Hai Chew v. Colding Template"
   },
   "1965": {
     "desc": "Repealed the national-origin quotas. Initiated a visa system for family reunification and skills. Set a quota for Western Hemisphere immigration. Set a 20k country limit for Eastern Hemisphere aliens.",
@@ -103,33 +99,21 @@ var laws_data={
     "desc": "Cuban nationals who enter, or were already present in the United States, legal status.",
     "title": "Cuban Refugee Adjustment Act"
   },
-  "1970": {
-    "desc": "The United States saw a total number of illegal immigrants estimated at 1.1 million, or half of one percent of the United States population.[11]",
-    "title": ""
-  },
-  "1980": {
-    "desc": "About 1.3 million illegal immigrants entered the US.[12]",
-    "title": ""
-  },
-  "1982": {
-    "desc": "",
-    "title": "Plyler v. Doe,[13] 457 U.S. 202 (1982)The court also stated that illegal immigrants are \"within the jurisdiction\" of the states in which they reside and, therefore, receive 14th amendmentprotections and stated, \"We have never suggested that the class of persons who might avail themselves of the equal protection guarantee is less than coextensive with that entitled to due process. To the contrary, we have recognized [457 U.S. 202, 212] that both provisions were fashioned to protect an identical class of persons, and to reach every exercise of state authority.\""
-  },
   "1986": {
     "desc": "Started sanctions for knowingly hiring illegal aliens. Provided amnesty to illegal aliens already in the US.[14] Increased border enforcement. Made it a crime to hire an illegal immigrant",
     "title": "Immigration Reform and Control Act"
   },
   "1990": {
     "desc": "the court reiterated the finding of Kwong Hai Chew v. Colding, 344 U.S. 590, 596 (1953), \"The Bill of Rights is a futile authority for the alien seeking admission for the first time to these shores. But once an alien lawfully enters and resides in this country he becomes invested with the rights guaranteed by the Constitution to all people within our borders\".Stated, \"those cases in which aliens have been determined to enjoy certain constitutional rights establish only that aliens receive such protections when they have come within the territory of, and have developed substantial connections with, this country. See, e. g., Plyler v. Doe, 457 U.S. 202, 212 .\"",
-    "title": "United States v. Verdugo-Urquidez[18]"
+    "title": "United States v. Verdugo-Urquidez"
   },
   "1996": {
     "desc": "Phone verification for worker authentication by employers. Access to welfare benefits more difficult for legal aliens. Increased border enforcement. Reed Amendment attempted to deny visas to former U.S. citizens, but was never enforced[19]",
-    "title": "Illegal Immigration Reform and Immigrant Responsibility Act of 1996(IIRaIRA)"
+    "title": "Illegal Immigration Reform and Immigrant Responsibility Act"
   },
   "1999": {
     "desc": "Held that statutes which discriminate within the class of aliens comport with the Due Process Clause of the Fifth Amendment (and the equal protection principles it incorporates) so long as they satisfy rational basis scrutiny.",
-    "title": "Rodriguez v. United States, 169 F.3d 1342, (11th Cir. 1999)"
+    "title": "Rodriguez v. United States"
   },
   "2002": {
     "desc": "Provided for more Border Patrol agents. Requires that schools report foreign students attending classes. Stipulates that foreign nationals in the US will be required to carry IDs with biometric technology.[21]",

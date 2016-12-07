@@ -177,12 +177,59 @@ var drawHeader = function(){
         .style("font-size","200%")
         .style("fill",colors.main)
         .text(textLabels.header.title);
-  header.append("text")
+  var sub = header.append("text")
         .attr("x",(positions.header.left/100)*ww)
         .attr("y",((positions.header.top+7)/100)*wh)
         .style("font-size","200%")
         .style("fill",colors.main)
         .text(textLabels.header.yr);
+
+  header.append("svg:image")
+        .attr('x',sub.node().getBBox().width+ww*.05)
+        .attr('y',((positions.header.top+7)/100)*wh-gridSize*3)
+        .attr('width', gridSize*3)
+        .style("cursor","pointer")
+        .on("click",function(){
+              selectedYear = startYr;
+              changeYr(selectedYear);
+              var loop = setInterval(function(){
+              selectedYear += 10;
+              if(selectedYear>=(endYr+10)){
+                clearInterval(loop);
+              }else{
+                if(selectedYear>(endYr)){
+                  selectedYear = endYr;
+                }
+                changeYr(selectedYear);
+              }
+              
+            },2000)
+        })
+        .attr('height', gridSize*3)
+        .attr("xlink:href","images/play.png")
+
+  // header.append("text")
+  //       .attr("x",sub.node().getBBox().width+ww*.05)
+  //       .attr("y",((positions.header.top+7)/100)*wh)
+  //       .on("click",function(){
+  //             selectedYear = startYr;
+  //             changeYr(selectedYear);
+  //             var loop = setInterval(function(){
+  //             selectedYear += 10;
+  //             if(selectedYear>=(endYr+10)){
+  //               clearInterval(loop);
+  //             }else{
+  //               if(selectedYear>(endYr)){
+  //                 selectedYear = endYr;
+  //               }
+  //             }
+  //             changeYr(selectedYear);
+  //           },2000)
+  //       })
+  //       .style("font-size","120%")
+  //       .style("fill",colors.main)
+  //       .style("text-decoration","underline")
+  //       .text("play");
 }
 
 var drawKeys = function(sqV){
@@ -194,6 +241,7 @@ var drawKeys = function(sqV){
         .style("width",gridSize)
         .style("height",gridSize)
         .style("fill",colors.main);
+
   keys.append("text")
         .attr("x",(positions.keys.left/100)*ww+gridSize*2)
         .attr("y",(positions.keys.top/100)*wh)
@@ -208,15 +256,15 @@ var changeYrIndicator = function(){
   var w = (positions.graph.width/100)*ww;
   var x1 = (positions.graph.left/100)*ww
   var x = d3.scaleLinear()
-              .domain([startYr-10, endYr+10])
+              .domain([startYr, endYr+10])
               .range([x1,x1+w]);
-  var xw = x(startYr)-x(startYr-10);
+  var xw = x(startYr+10)-x(startYr);
   d3.select(".yrLabel")
     .text(selectedYear);
   d3.select("#yrInd")
          .transition()
          .duration(1000)
-         .attr("transform","translate("+(x(selectedYear)-x(startYr)+xw/2)+",0)");
+         .attr("transform","translate("+(x(selectedYear)-x(startYr)+xw)+",0)");
 }
 
 var drawGraph = function(){
@@ -238,12 +286,12 @@ var drawGraph = function(){
       }
     }
     var x = d3.scaleLinear()
-              .domain([startYr-10, endYr+10])
+              .domain([startYr, endYr+10])
               .range([x1,x1+w]);
     var y = d3.scaleLinear()
-              .domain([max, min])
+              .domain([max, min-max*.08])
               .range([y1,y1+h]);
-    var xw = x(startYr)-x(startYr-10);
+    var xw = x(startYr+10)-x(startYr);
 
     // graph.append("rect")
     //      .attr("x",x(1830))
