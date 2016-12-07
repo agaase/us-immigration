@@ -1,4 +1,4 @@
-var ww=window.innerWidth, wh=window.innerHeight, gridSize = 9;
+var ww=window.innerWidth, wh=window.innerHeight, gridSize = Math.ceil(window.innerWidth/150);
 var selectedYear=1840;
 var startYr=1840;
 var endYr = 2015;
@@ -485,29 +485,29 @@ drawRegions();
 drawHeader();
 drawGraph();
 
-setTimeout(function(){
-  changeYrIndicator(); 
-  renderMap();
-  drawLaws();  
-},1000)
+// setTimeout(function(){
+//   changeYrIndicator(); 
+//   renderMap();
+//   drawLaws();  
+// },1000)
 
 
-// var loop = setInterval(function(){
-//   selectedYear += 10;
-//   if(selectedYear>=(endYr+10)){
-//     clearInterval(loop);
-//   }else{
-//     if(selectedYear>(endYr)){
-//       selectedYear = endYr;
-//     }
-//     $("#container #map .countryOnMap").remove();
-//     $(".keys").empty();
-//     $(".laws").empty();
-//     changeYrIndicator(); 
-//     renderMap();
-//     drawLaws();
-//   }
-// },2000)
+var loop = setInterval(function(){
+  selectedYear += 10;
+  if(selectedYear>=(endYr+10)){
+    clearInterval(loop);
+  }else{
+    if(selectedYear>(endYr)){
+      selectedYear = endYr;
+    }
+    $("#container #map .countryOnMap").remove();
+    $(".keys").empty();
+    $(".laws").empty();
+    changeYrIndicator(); 
+    renderMap();
+    drawLaws();
+  }
+},2000)
 
 // for(var i=0;i<container.length;i++){
 // 	var side = (parseInt(Math.random()*10)+1);
