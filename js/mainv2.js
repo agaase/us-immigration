@@ -14,6 +14,10 @@ var svg = d3.select("#container")
                 .attr("width", $("#container").width())
                 .attr("height", $("#container").height())
                 .attr("id","dyadsCont");
+// Define the div for the tooltip
+var tooltipDiv = d3.select("body").append("div") 
+      .attr("class", "tooltip")       
+      .style("opacity", 0);
  
 var dummy = {
   "america" : {
@@ -132,12 +136,27 @@ var drawLaws = function(){
   var laws = svg.append("g")
                 .attr("class","laws");
   var ct=0, x1=(positions.laws.left/100)*ww;
+
   for(var yr in laws_data){
     if(yr < (selectedYear-5) && yr > (selectedYear-20)  ){
       var text = laws.append("text")
         .attr("x",x1)
         .attr("y",(positions.laws.top/100)*wh)
-        .style("font-size","75%")
+        .on("mouseover", function(d) {   
+            tooltipDiv.transition()    
+                .duration(200)    
+                .style("opacity", .9);    
+            tooltipDiv.html($(event.currentTarget).attr("title"))  
+                .style("left", (d3.event.pageX) + "px")   
+                .style("top", (d3.event.pageY - 28) + "px");  
+            })          
+        .on("mouseout", function(d) {   
+            tooltipDiv.transition()    
+                .duration(50)    
+                .style("opacity", 0); 
+        })
+        .attr("title",laws_data[yr]["desc"])
+        .style("font-size","100%")
         .style("fill",colors.main)
         .style("text-decoration","underline")
         .text(yr+" - "+laws_data[yr]["title"].substring(0,40));  
@@ -237,7 +256,12 @@ var drawGraph = function(){
              .attr("y",y(data[i].value))
              .attr("width",xw)
              .attr("height",0)
+             .attr("value",data[i].value)
+             .attr("yr",data[i].yr)
              .style("fill",colors.graphBar)
+             .on("click",function(){
+                changeYr(parseInt($(arguments[2]).attr("yr")))
+             })
              .transition()
              .delay(i*50)
              .duration(50)
@@ -346,11 +370,6 @@ var renderMap = function(){
           dummy[regions[z].key]["values"] = values;
         }
       }
-      // Define the div for the tooltip
-      var div = d3.select("body").append("div") 
-          .attr("class", "tooltip")       
-          .style("opacity", 0);
-
       var totCt = 0;
       for(var regi in dummy){
         var region = dummy[regi];
@@ -384,15 +403,15 @@ var renderMap = function(){
               .attr("class","countryOnMap")
               .attr("title",values[i].value)
               .on("mouseover", function(d) {   
-                  div.transition()    
+                  tooltipDiv.transition()    
                       .duration(200)    
                       .style("opacity", .9);    
-                  div.html($(event.currentTarget).attr("title"))  
+                  tooltipDiv.html($(event.currentTarget).attr("title"))  
                       .style("left", (d3.event.pageX) + "px")   
                       .style("top", (d3.event.pageY - 28) + "px");  
                   })          
               .on("mouseout", function(d) {   
-                  div.transition()    
+                  tooltipDiv.transition()    
                       .duration(50)    
                       .style("opacity", 0); 
               });
@@ -496,6 +515,16 @@ setTimeout(function(){
   drawLaws();  
 },1000)
 
+
+var changeYr = function(yr){
+    selectedYear =yr;
+    $("#container #map .countryOnMap").remove();
+    $(".keys").empty();
+    $(".laws").empty();
+    changeYrIndicator(); 
+    renderMap();
+    drawLaws();
+}
 
 // var loop = setInterval(function(){
 //   selectedYear += 10;
