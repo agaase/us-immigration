@@ -177,7 +177,7 @@ var drawKeys = function(sqV){
         .attr("alignment-baseline","central")
         .style("font-size","125%")
         .style("fill",colors.main)
-        .text("~ "+parseInt(sqV/1000)+"k immigrants");
+        .text("~ "+(sqV > 1000 ? (parseInt(sqV/1000)+"k") : sqV)+" immigrants");
 }
 
 var changeYrIndicator = function(){
