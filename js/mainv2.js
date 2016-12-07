@@ -289,7 +289,7 @@ var drawRegions = function(values){
        .attr("x",x1)
        .attr("y",y1-5)
        .text(regi)
-       .style("font-size","14px")
+       .style("font-size","90%")
        .attr("class","regionLabel")
        .style("fill","#5D6068");
   }
