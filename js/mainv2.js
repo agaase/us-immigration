@@ -309,6 +309,7 @@ var drawGraph = function(){
              .attr("value",data[i].value)
              .attr("yr",data[i].yr)
              .style("fill",colors.graphBar)
+             .style("cursor","pointer")
              .on("click",function(){
                 changeYr(parseInt($(arguments[2]).attr("yr")))
              })
