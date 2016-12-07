@@ -1,6 +1,6 @@
 var ww=window.innerWidth, wh=window.innerHeight, gridSize = Math.ceil(window.innerWidth/150);
-var selectedYear=1840;
-var startYr=1840;
+var selectedYear=2010;
+var startYr=1830;
 var endYr = 2015;
 var colors = {
   "main" : "#5D6068",
@@ -109,7 +109,8 @@ var positions = {
   "map" : {
     "top" : 50,
     "left" : 5,
-    "height" : 50
+    "height" : 50,
+    "width" : 95
   },
   "graph" : {
     "top" : 5,
@@ -130,17 +131,18 @@ var positions = {
 var drawLaws = function(){
   var laws = svg.append("g")
                 .attr("class","laws");
-  var ct=0;
+  var ct=0, x1=(positions.laws.left/100)*ww;
   for(var yr in laws_data){
     if(yr < (selectedYear-5) && yr > (selectedYear-20)  ){
-      laws.append("text")
-        .attr("x",(positions.laws.left/100)*ww+ct*250)
+      var text = laws.append("text")
+        .attr("x",x1)
         .attr("y",(positions.laws.top/100)*wh)
         .style("font-size","75%")
         .style("fill",colors.main)
         .style("text-decoration","underline")
         .text(yr+" - "+laws_data[yr]["title"].substring(0,40));  
         ct++;
+        x1 += text.node().getBBox().width+ww*.01;
     }
     
   }
@@ -187,12 +189,13 @@ var changeYrIndicator = function(){
   var x = d3.scaleLinear()
               .domain([startYr-10, endYr+10])
               .range([x1,x1+w]);
+  var xw = x(startYr)-x(startYr-10);
   d3.select(".yrLabel")
     .text(selectedYear);
   d3.select("#yrInd")
          .transition()
          .duration(1000)
-         .attr("transform","translate("+(x(selectedYear)-x(startYr))+",0)");
+         .attr("transform","translate("+(x(selectedYear)-x(startYr)+xw/2)+",0)");
 }
 
 var drawGraph = function(){
@@ -270,7 +273,7 @@ var drawRegions = function(values){
                .attr("id","map");
   var x = d3.scaleLinear()
          .domain([0, 100])
-         .range([$("#container").width()*.05, $("#container").width()*.9]);
+         .range([ww*(positions.map.left/100), ww*(positions.map.width/100)]);
  var totHt = wh*(positions.map.height/100);
  var y = d3.scaleLinear()
          .domain([0, 100])
@@ -307,7 +310,7 @@ var renderMap = function(){
       //The scales for x and y for each region
       var x = d3.scaleLinear()
               .domain([0, 100])
-              .range([$("#container").width()*.05, $("#container").width()*.9]);
+              .range([ww*(positions.map.left/100), ww*(positions.map.width/100)]);
       var totHt = wh*(positions.map.height/100);
       var y = d3.scaleLinear()
               .domain([0, 100])
@@ -334,7 +337,11 @@ var renderMap = function(){
       for(var z=0;z<regions.length;z++){
         if(dummy[regions[z].key]){
           var values = regions[z].country.buckets.map(function(cc){
-            return parseInt(cc.sum_v.value/sqV);
+            return {
+              "name" : cc.key,
+              "value" : cc.sum_v.value,
+              "newV":parseInt(cc.sum_v.value/sqV)
+            }
           })
           dummy[regions[z].key]["values"] = values;
         }
@@ -344,7 +351,6 @@ var renderMap = function(){
           .attr("class", "tooltip")       
           .style("opacity", 0);
 
-      debugger;
       var totCt = 0;
       for(var regi in dummy){
         var region = dummy[regi];
@@ -374,10 +380,9 @@ var renderMap = function(){
 
         var xx = x1, yy=y1, matrix = [[]];
         for(var i=0;i<values.length;i++){
-          var valueC = values[i]*sqV;
           var coun = reg.append("g")
               .attr("class","countryOnMap")
-              .attr("title",values[i]*sqV)
+              .attr("title",values[i].value)
               .on("mouseover", function(d) {   
                   div.transition()    
                       .duration(200)    
@@ -388,10 +393,10 @@ var renderMap = function(){
                   })          
               .on("mouseout", function(d) {   
                   div.transition()    
-                      .duration(500)    
+                      .duration(50)    
                       .style("opacity", 0); 
               });
-          for(var j=0;j<(values[i]>0 ? values[i] : 0);j++){
+          for(var j=0;j<(values[i].newV>0 ? values[i].newV : 0);j++){
             if(xx + gridSize > bound){
                 xx = x1;
                 yy += gridSize;
@@ -407,7 +412,7 @@ var renderMap = function(){
              .attr("y",window.innerHeight)
              .attr("width",gridSize)
              .attr("height",gridSize)
-             .style("fill",values[i]<1 ? "none":colors.squareFill)
+             .style("fill",values[i].newV<1 ? "none":colors.squareFill)
              .style("stroke",colors.squareBorder)
              .attr("c_id","c_"+i)
              
@@ -485,29 +490,29 @@ drawRegions();
 drawHeader();
 drawGraph();
 
-// setTimeout(function(){
-//   changeYrIndicator(); 
-//   renderMap();
-//   drawLaws();  
-// },1000)
+setTimeout(function(){
+  changeYrIndicator(); 
+  renderMap();
+  drawLaws();  
+},1000)
 
 
-var loop = setInterval(function(){
-  selectedYear += 10;
-  if(selectedYear>=(endYr+10)){
-    clearInterval(loop);
-  }else{
-    if(selectedYear>(endYr)){
-      selectedYear = endYr;
-    }
-    $("#container #map .countryOnMap").remove();
-    $(".keys").empty();
-    $(".laws").empty();
-    changeYrIndicator(); 
-    renderMap();
-    drawLaws();
-  }
-},2000)
+// var loop = setInterval(function(){
+//   selectedYear += 10;
+//   if(selectedYear>=(endYr+10)){
+//     clearInterval(loop);
+//   }else{
+//     if(selectedYear>(endYr)){
+//       selectedYear = endYr;
+//     }
+//     $("#container #map .countryOnMap").remove();
+//     $(".keys").empty();
+//     $(".laws").empty();
+//     changeYrIndicator(); 
+//     renderMap();
+//     drawLaws();
+//   }
+// },2000)
 
 // for(var i=0;i<container.length;i++){
 // 	var side = (parseInt(Math.random()*10)+1);
