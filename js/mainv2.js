@@ -90,7 +90,7 @@ var dummy = {
 var runQ = function(q,c,type){
   $.ajax({
     type: "POST",
-    url: "https://search-undp-uhzzk2e4xmpuedy3ys6war7364.us-east-1.es.amazonaws.com/immigration/"+(type || "country_yr") +"/_search",
+    url: "http://35.161.122.132:9200/immigration/"+(type || "country_yr") +"/_search",
     data: JSON.stringify(q),
     success: function(data){
       c(data);
