@@ -85,8 +85,8 @@ var dummy = {
   }
 }
 
-//https://search-undp-uhzzk2e4xmpuedy3ys6war7364.us-east-1.es.amazonaws.com
-  //http://localhost:9200
+//http://35.161.122.132:9200
+  // http://localhost:9200
 var runQ = function(q,c,type){
   $.ajax({
     type: "POST",
