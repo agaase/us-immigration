@@ -200,7 +200,7 @@ var drawHeader = function(){
           .attr("y",bbox.y)
           .attr("width",(positions.header.height/100)*wh/2)
           .attr("height",(positions.header.height/100)*wh)
-          .attr("xlink:href","images/logo.png");
+          .attr("xlink:href","images/LOGO.png");
 
   var sub = header.append("text")
         .attr("x",newx)
