@@ -87,11 +87,11 @@ var dummy = {
 }
 
 //http://35.161.122.132:9200
-  //
+  //http://localhost:9200
 var runQ = function(q,c,type){
   $.ajax({
     type: "POST",
-    url: " http://localhost:9200/immigration/"+(type || "country_yr") +"/_search",
+    url: "http://35.161.122.132:9200/immigration/"+(type || "country_yr") +"/_search",
     data: JSON.stringify(q),
     success: function(data){
       c(data);
@@ -351,8 +351,8 @@ var  drawGraph = function() {
              .attr("yr",data[i].yr)
              .style("fill",colors.graphBar)
              .style("cursor","pointer")
+             .style("stroke",colors.squareBorder)
              .on("click",function(){
-                
                 changeYr(parseInt($(arguments[2]).attr("yr")))
              })
              .transition()
@@ -365,7 +365,7 @@ var  drawGraph = function() {
            .attr("y",y1+h+gridSize*1.5)
            .attr("class","yrLabelSmall")
            .attr("text-anchor","middle")
-           .style("fill",colors.squareFill)
+           .style("fill",colors.main)
            .style("font-size","65%")
            .text(data[i].yr);
     }
