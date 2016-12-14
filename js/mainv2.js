@@ -9,6 +9,10 @@ var colors = {
   "squareBorder" : "#B6B6B0",
   "graphBar" : "#C7C7C1"
 }
+var helpText = {
+  "square" : "1 block depicts the number of immigrants as shown. For countries with share less than this value, a small block signifies them.",
+  "laws" : "All the immigration laws passed in USA for and before the duration as selected."
+};
 
 var svg = d3.select("#container")
                 .append("svg")
@@ -86,6 +90,20 @@ var dummy = {
   }
 }
 
+var tooltipShow = function(x,y,text,type){
+  $(".tooltip").removeClass("small big").addClass(type);
+    var wt = (type == "big" ? 0.3 : 0.1)*ww;
+    if(x + wt>ww){
+      x = x - wt;
+    }
+  tooltipDiv.transition()    
+        .duration(200)    
+        .style("opacity", .9);    
+  tooltipDiv.html(text)  
+        .style("left", x + "px")   
+        .style("top", (y - 28) + "px");  
+}
+
 //http://35.161.122.132:9200
   //http://localhost:9200
 var runQ = function(q,c,type){
@@ -129,7 +147,7 @@ var positions = {
     "left" : 6,
   },
   "laws" : {
-    "top" : 32,
+    "top" : 30,
     "left" : 4
   }
 }
@@ -137,19 +155,38 @@ var positions = {
 var drawLaws = function(){
   var laws = svg.append("g")
                 .attr("class","laws");
-  var ct=0, x1=((100-positions.laws.left)/100)*ww-gridSize;
+  var ct=0, x1=((100-positions.laws.left)/100)*ww-gridSize, y1 = (positions.laws.top/100)*wh;
 
   //Trying to read the years in the descending order
   var yrs = Object.keys(laws_data).sort(function(a,b){
     return b-a;
-  })
+  });
+  laws.append("image")
+      .attr("x",x1)
+      .attr("y",y1)
+      .attr("width",gridSize*2)
+      .attr("height",gridSize*2)
+      .attr("class","info")
+      .style("cursor","pointer")
+      .on("click",function(){
+        tooltipShow(d3.event.pageX,d3.event.pageY,helpText["laws"],"big");
+      })
+      .on("mouseout", function(d) {   
+        tooltipDiv.
+          transition()    
+          .duration(50)    
+          .style("opacity", 0) 
+          .style("left", "-1000px");
+      })
+      .attr("xlink:href","images/info.png");
 
+  x1 = x1 - gridSize*2;
   for(var i=0;i<yrs.length;i++){
     var yr = yrs[i];
     if(yr < (selectedYear-5) && yr > (selectedYear-20)  ){
       var text = laws.append("text")
         .attr("x",x1)
-        .attr("y",(positions.laws.top/100)*wh)
+        .attr("y",y1)
         .on("click", function(d) {   
             $(".tooltip").removeClass("small big").addClass("big");
             var x =    d3.event.pageX;
@@ -174,6 +211,7 @@ var drawLaws = function(){
         .style("fill",colors.main)
         .style("cursor","pointer")
         .attr("text-anchor","end")
+        .attr("alignment-baseline","hanging")
         .style("text-decoration","underline")
         .text(yr+" - "+laws_data[yr]["title"].substring(0,40));  
         ct++;
@@ -235,7 +273,7 @@ var drawHeader = function(){
         .attr("xlink:href","images/play.png");
 
     header.append("text")
-         .attr("x",newx+sub.node().getBBox().width+gridSize*4)
+         .attr("x",newx+box.width+gridSize*4)
          .attr("y",box.y+box.height/2)
          .attr("alignment-baseline","middle")
          .text("Play Timeline")
@@ -260,6 +298,8 @@ var drawKeys = function(sqV){
         .style("height",gridSize)
         .style("fill",colors.main);
 
+  
+
   var text = keys.append("text")
         .attr("x",x1+gridSize*2)
         .attr("y",(positions.keys.top/100)*wh)
@@ -268,6 +308,26 @@ var drawKeys = function(sqV){
         .style("font-size","100%")
         .style("fill",colors.main)
         .text("~ "+(sqV > 1000 ? (parseInt(sqV/1000)+"k") : sqV)+" immigrants");
+
+  text = text.node().getBBox();
+  keys.append("image")
+          .attr("x",text.x + text.width+ gridSize)
+          .attr("y",text.y+text.height*.15)
+          .attr("width",text.height*.7)
+          .attr("height",text.height*.7)
+          .attr("class","info")
+          .style("cursor","pointer")
+          .on("click",function(){
+            tooltipShow(d3.event.pageX,d3.event.pageY,helpText["square"],"big");
+          })
+          .on("mouseout", function(d) {   
+            tooltipDiv.
+              transition()    
+              .duration(50)    
+              .style("opacity", 0) 
+              .style("left", "-1000px");
+          })
+          .attr("xlink:href","images/info.png");
 
   
 }
