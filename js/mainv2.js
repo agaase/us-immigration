@@ -14,6 +14,8 @@ var helpText = {
   "laws" : "All the immigration laws passed in USA for and before the duration as selected."
 };
 
+var playLoopTimer;
+
 var svg = d3.select("#container")
                 .append("svg")
                 .attr("width", $("#container").width())
@@ -256,10 +258,10 @@ var drawHeader = function(){
         .on("click",function(){
               selectedYear = startYr;
               changeYr(selectedYear);
-              var loop = setInterval(function(){
+              playLoopTimer = setInterval(function(){
               selectedYear += 10;
               if(selectedYear>=(endYr+10)){
-                clearInterval(loop);
+                clearInterval(playLoopTimer);
               }else{
                 if(selectedYear>(endYr)){
                   selectedYear = endYr;
@@ -706,6 +708,9 @@ setTimeout(function(){
 
 var changeYr = function(yr){
     selectedYear =yr;
+    if(playLoopTimer){
+      clearInterval(playLoopTimer);
+    }
     $(".countryOnMap,.countrySep").remove();
     // d3.selectAll(".block")
     // .transition()
@@ -719,7 +724,7 @@ var changeYr = function(yr){
     drawLaws();
 }
 
-// var loop = setInterval(function(){
+// playLoopTimer = setInterval(function(){
 //   selectedYear += 10;
 //   if(selectedYear>=(endYr+10)){
 //     clearInterval(loop);
