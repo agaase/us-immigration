@@ -3,8 +3,8 @@ var csv = require('csv');
 var yrWiseJson = {};
 var deferred = require('deferred');
 var elasticsearch = require('elasticsearch');
-// var hostu = "http://localhost:9200";
-var hostu = 'http://35.161.122.132:9200/';
+var hostu = "http://localhost:9200";
+// var hostu = 'http://35.161.122.132:9200/';
 var client = new elasticsearch.Client({
   host: hostu
 });
@@ -1549,7 +1549,7 @@ var parser = csv.parse({delimiter: ','}, function(err, data){
        }
     }
   }
-  // console.log("posting - " + items.length);
+  console.log("posting - " + items.length);
   elPost(items);
 });
 

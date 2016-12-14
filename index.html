@@ -3,16 +3,11 @@
 <head>
 	<title></title>
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src='js/d3.min.js'></script>	
-	<script type="text/javascript" src='js/world.js'></script>
-	<script type="text/javascript" src='data/imm_laws.js'></script>
-	<script type="text/javascript" src="js/queries.js"></script>
 	<style type="text/css">
 		body,html{
 			margin: 0;
 			padding: 0;
-			background-color: #fff;
+			background-color: #f9f9f9;
 			height: 100%;
 			padding-top: 1px;
 			color: #5D6068;
@@ -27,12 +22,23 @@
 		}
 		.tooltip{
 			position: fixed;
-			padding: 10px;
-			background-color: #fff;
-			max-width: 30%;
+			padding: 1%;
+			background-color: #f9f9f9;
 			box-shadow: 0 0 2px;
-			line-height: 200%;
-			border-radius: 5px;
+			line-height: 175%;
+			font-size: 80%;
+		}
+		.tooltip.big{
+			width: 30%;
+		}
+		.tooltip.small{
+			width: 10%;
+		}
+		.yrLabelSmall{
+			font-size: 75%;
+		}
+		.yrLabel{
+			font-size: 100%;
 		}
 		@media screen and (min-width: 1500px) {
 			body{
@@ -47,7 +53,12 @@
 <div id='container'>
 	
 </div>
-
+<script src="js/lib/jquery.min.js"></script>
+<script type="text/javascript" src='js/d3.min.js'></script>	
+<script type="text/javascript" src='js/world.js'></script>
+<script type="text/javascript" src='data/imm_laws.js'></script>
+<script type="text/javascript" src="js/queries.js"></script>
+<script src="js/lib/numeral.min.js"></script>
 <script type="text/javascript" src="js/mainv2.js"></script>
 </body>
 </html>
