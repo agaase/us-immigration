@@ -191,7 +191,7 @@ var drawHeader = function(){
   var text = header.append("text")
         .attr("x",newx)
         .attr("y",(positions.header.top/100)*wh)
-        .style("font-size",.4*(positions.header.height/100)*wh)
+        .style("font-size",3*gridSize)
         .style("fill",colors.main)
         .text(textLabels.header.title);
   var bbox = text.node().getBBox();
@@ -205,14 +205,14 @@ var drawHeader = function(){
   var sub = header.append("text")
         .attr("x",newx)
         .attr("y",((positions.header.top)/100)*wh + bbox.height + ((positions.header.height/100)*wh - 2*bbox.height) )
-        .style("font-size", .2*(positions.header.height/100)*wh)
+        .style("font-size", 2*gridSize)
         .style("fill",colors.main)
         .text(textLabels.header.yr);
 
   var box = sub.node().getBBox();
   header.append("svg:image")
         .attr('x',newx+box.width+gridSize*2)
-        .attr('y',box.y)
+        .attr('y',box.y+gridSize/2)
         .attr('width', gridSize*2)
         .style("cursor","pointer")
         .on("click",function(){
@@ -236,12 +236,12 @@ var drawHeader = function(){
 
     header.append("text")
          .attr("x",newx+sub.node().getBBox().width+gridSize*4)
-         .attr("y",box.y)
+         .attr("y",box.y+gridSize/2)
          .attr("alignment-baseline","text-before-edge")
          .text("Play Timeline")
          .style("cursor","pointer")
          .style("fill",colors.main)
-         .style("font-size","75%")
+         .style("font-size","100%")
          .attr("class","");
 
 }
