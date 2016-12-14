@@ -164,8 +164,8 @@ var drawLaws = function(){
   laws.append("image")
       .attr("x",x1)
       .attr("y",y1)
-      .attr("width",gridSize*2)
-      .attr("height",gridSize*2)
+      .attr("width",gridSize*1.5)
+      .attr("height",gridSize*1.5)
       .attr("class","info")
       .style("cursor","pointer")
       .on("click",function(){
@@ -180,7 +180,7 @@ var drawLaws = function(){
       })
       .attr("xlink:href","images/info.png");
 
-  x1 = x1 - gridSize*2;
+  x1 = x1 - gridSize*1.5;
   for(var i=0;i<yrs.length;i++){
     var yr = yrs[i];
     if(yr < (selectedYear-5) && yr > (selectedYear-20)  ){
