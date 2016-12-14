@@ -10,7 +10,7 @@ var colors = {
   "graphBar" : "#C7C7C1"
 }
 var helpText = {
-  "square" : "1 block depicts the number of immigrants as shown. For countries with share less than this value, a small block signifies them.",
+  "square" : "1 block is equal to the number of immigrants as shown. For countries with share less than this value, a smaller block is displayed",
   "laws" : "All the immigration laws passed in USA for and before the duration as selected."
 };
 
