@@ -540,7 +540,7 @@ var renderMap = function(){
             return {
               "name" : cc.key,
               "value" : cc.sum_v.value,
-              "newV": cc.sum_v.value > sqV ?  parseInt(cc.sum_v.value/sqV) : 0.5
+              "newV": cc.sum_v.value > sqV ?  parseInt(cc.sum_v.value/sqV) : (cc.sum_v.value ? 0.5 : 0)
             }
           })
           dummy[reg]["values"] = values;
