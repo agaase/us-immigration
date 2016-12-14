@@ -191,7 +191,7 @@ var drawHeader = function(){
   var text = header.append("text")
         .attr("x",newx)
         .attr("y",(positions.header.top/100)*wh)
-        .style("font-size","175%")
+        .style("font-size",.4*(positions.header.height/100)*wh)
         .style("fill",colors.main)
         .text(textLabels.header.title);
   var bbox = text.node().getBBox();
@@ -205,7 +205,7 @@ var drawHeader = function(){
   var sub = header.append("text")
         .attr("x",newx)
         .attr("y",((positions.header.top)/100)*wh + bbox.height + ((positions.header.height/100)*wh - 2*bbox.height) )
-        .style("font-size","150%")
+        .style("font-size", .2*(positions.header.height/100)*wh)
         .style("fill",colors.main)
         .text(textLabels.header.yr);
 
@@ -366,7 +366,7 @@ var  drawGraph = function() {
            .attr("class","yrLabelSmall")
            .attr("text-anchor","middle")
            .style("fill",colors.main)
-           .style("font-size","65%")
+           .style("font-size",gridSize)
            .text(data[i].yr);
     }
 
