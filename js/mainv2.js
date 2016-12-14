@@ -121,7 +121,7 @@ var positions = {
   "graph" : {
     "top" : 5,
     "left" : 4,
-    "width" : 60,
+    "width" : 30,
     "height" : 12
   },
   "keys" : {
@@ -187,7 +187,7 @@ var drawHeader = function(){
   var header = svg.append("g");
 
   
-  var newx = (positions.header.left/100)*ww+(positions.header.height/100)*wh;
+  var newx = (positions.header.left/100)*ww+(positions.header.height/100)*wh/2+gridSize*2;
   var text = header.append("text")
         .attr("x",newx)
         .attr("y",(positions.header.top/100)*wh)
@@ -212,7 +212,7 @@ var drawHeader = function(){
   var box = sub.node().getBBox();
   header.append("svg:image")
         .attr('x',newx+box.width+gridSize*2)
-        .attr('y',box.y+box.height/4)
+        .attr('y',box.y)
         .attr('width', gridSize*2)
         .style("cursor","pointer")
         .on("click",function(){
@@ -236,8 +236,8 @@ var drawHeader = function(){
 
     header.append("text")
          .attr("x",newx+sub.node().getBBox().width+gridSize*4)
-         .attr("y",box.y+box.height/1.5)
-         .attr("alignment-baseline","bottom")
+         .attr("y",box.y)
+         .attr("alignment-baseline","text-before-edge")
          .text("Play Timeline")
          .style("cursor","pointer")
          .style("fill",colors.main)
