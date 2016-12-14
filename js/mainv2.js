@@ -121,7 +121,7 @@ var positions = {
   "graph" : {
     "top" : 5,
     "left" : 4,
-    "width" : 30,
+    "width" : 50,
     "height" : 12
   },
   "keys" : {
@@ -212,7 +212,7 @@ var drawHeader = function(){
   var box = sub.node().getBBox();
   header.append("svg:image")
         .attr('x',newx+box.width+gridSize*2)
-        .attr('y',box.y+gridSize/2)
+        .attr('y',box.y+box.height*.2)
         .attr('width', gridSize*2)
         .style("cursor","pointer")
         .on("click",function(){
@@ -231,15 +231,16 @@ var drawHeader = function(){
               
             },2000)
         })
-        .attr('height', gridSize*2)
+        .attr('height', box.height*.6)
         .attr("xlink:href","images/play.png");
 
     header.append("text")
          .attr("x",newx+sub.node().getBBox().width+gridSize*4)
-         .attr("y",box.y+gridSize/2)
-         .attr("alignment-baseline","text-before-edge")
+         .attr("y",box.y+box.height/2)
+         .attr("alignment-baseline","middle")
          .text("Play Timeline")
          .style("cursor","pointer")
+         .style("text-decoration","underline")
          .style("fill",colors.main)
          .style("font-size","100%")
          .attr("class","");
