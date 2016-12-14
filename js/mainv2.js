@@ -267,7 +267,7 @@ var drawHeader = function(){
                 changeYr(selectedYear);
               }
               
-            },2000)
+            },3000)
         })
         .attr('height', box.height*.6)
         .attr("xlink:href","images/play.png");
