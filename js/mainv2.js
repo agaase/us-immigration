@@ -11,7 +11,7 @@ var colors = {
 }
 var helpText = {
   "square" : "1 block is equal to the number of immigrants as shown. For countries with share less than this value, a smaller block is displayed",
-  "laws" : "All the immigration laws passed in USA for and before the duration as selected."
+  "laws" : "All the immigration laws passed in USA around the timespan selected."
 };
 
 var playLoopTimer;
