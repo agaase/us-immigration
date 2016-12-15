@@ -257,7 +257,7 @@ var drawHeader = function(){
         .style("cursor","pointer")
         .on("click",function(){
               selectedYear = startYr;
-              changeYr(selectedYear);
+              changeYr(selectedYear,true);
               playLoopTimer = setInterval(function(){
               selectedYear += 10;
               if(selectedYear>=(endYr+10)){
@@ -266,7 +266,7 @@ var drawHeader = function(){
                 if(selectedYear>(endYr)){
                   selectedYear = endYr;
                 }
-                changeYr(selectedYear);
+                changeYr(selectedYear,true);
               }
               
             },3000)
@@ -706,9 +706,9 @@ setTimeout(function(){
 },1000)
 
 
-var changeYr = function(yr){
+var changeYr = function(yr,isLoop){
     selectedYear =yr;
-    if(playLoopTimer){
+    if(playLoopTimer && !isLoop){
       clearInterval(playLoopTimer);
     }
     $(".countryOnMap,.countrySep").remove();
