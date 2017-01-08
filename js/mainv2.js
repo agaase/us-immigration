@@ -492,6 +492,14 @@ var drawRegions = function(values){
        .style("font-size","90%")
        .attr("class","regionLabel")
        .style("fill","#5D6068");
+
+    //Region name
+    // reg.append("text")
+    //    .attr("x",ww*.05)
+    //    .attr("y",wh*.97)
+    //    .text("<a href='https://docs.google.com/spreadsheets/d/1-xDK8hd_FZOJb2NKxzBmpOxG0tp1iknmEUc4Z_d27tc/edit#gid=1952306000'>Data Source</a>")
+    //    .style("font-size","50%")
+    //    .style("fill","#5D6068");
   }
 }
 
